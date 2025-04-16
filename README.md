@@ -28,6 +28,7 @@ It's pretty easy: Replace arrays in your configuration files with value objects 
 The following configuration classes are available:
 
 * [`IconConfiguration`](#iconconfiguration-for-configurationiconsphp)
+* [`MiddlewareConfiguration`](#middlewareconfiguration-for-configurationrequestmiddlewaresphp)
 
 ### [`IconConfiguration`](src/Configuration/IconConfiguration.php) (for `Configuration/Icons.php`)
 
@@ -97,6 +98,66 @@ return Typo3ConfigObjects\Configuration\IconConfiguration::create()
         Typo3ConfigObjects\ValueObject\Icon::create('tx-example-my-new-icon')
             ->useCustomIconProvider(\Vendor\Example\Imaging\MyCustomIconProvider::class)
             ->addOption('renderer', \Vendor\Example\Renderer\MyCustomIconRenderer::class)
+    )
+
+    // Don't forget to return an array representation (TYPO3 expects an array to be returned)
+    ->toArray();
+```
+
+### [`MiddlewareConfiguration`](src/Configuration/MiddlewareConfiguration.php) (for `Configuration/RequestMiddlewares.php`)
+
+**Before:**
+
+```php
+// Configuration/RequestMiddlewares.php
+
+use TYPO3\CMS\Core;
+
+return [
+    'backend' => [
+        'vendor/extension/my-middleware' => [
+            'target' => \Vendor\Example\Middleware\MyMiddleware::class,
+        ],
+        'vendor/extension/my-other-middleware' => [
+            'target' => \Vendor\Example\Middleware\MyOtherMiddleware::class,
+            'before' => [
+                'vendor/extension/my-middleware',
+            ],
+            'after' => [
+                'typo3/cms-backend/authentication',
+            ],
+        ],
+    ],
+    'frontend' => [
+        'typo3/cms-redirects/redirecthandler' => [
+            'disabled' => true,
+        ],
+    ],
+];
+```
+
+**After:**
+
+```php
+// Configuration/RequestMiddlewares.php
+
+use EliasHaeussler\Typo3ConfigObjects;
+
+return Typo3ConfigObjects\Configuration\MiddlewareConfiguration::create()
+    // Add a list of middlewares
+    ->addToBackendStack(
+        Typo3ConfigObjects\ValueObject\RequestMiddleware::create('vendor/extension/my-middleware')
+            ->setTarget(\Vendor\Example\Middleware\MyMiddleware::class),
+        Typo3ConfigObjects\ValueObject\RequestMiddleware::create('vendor/extension/my-other-middleware')
+            ->setTarget(\Vendor\Example\Middleware\MyOtherMiddleware::class)
+            ->before('vendor/extension/my-middleware')
+            ->after('typo3/cms-backend/authentication')
+    )
+
+    // You can also disable existing middlewares
+    ->addToFrontendStack(
+        Typo3ConfigObjects\ValueObject\RequestMiddleware::create('typo3/cms-redirects/redirecthandler')
+            ->disable()
     )
 
     // Don't forget to return an array representation (TYPO3 expects an array to be returned)
