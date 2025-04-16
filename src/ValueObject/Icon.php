@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3ConfigObjects\ValueObject;
 
+use EliasHaeussler\Typo3ConfigObjects\Contracts;
 use EliasHaeussler\Typo3ConfigObjects\Exception;
 use TYPO3\CMS\Core;
 
@@ -44,8 +45,10 @@ use function is_string;
  *     },
  *     provider?: class-string<Core\Imaging\IconProviderInterface>,
  * }
+ *
+ * @implements Contracts\Arrayable<IconOptions>
  */
-final class Icon
+final class Icon implements Contracts\Arrayable
 {
     private const DEPRECATED_KEY = 'deprecated';
     private const SOURCE_KEY = 'source';
@@ -177,8 +180,6 @@ final class Icon
     }
 
     /**
-     * @return IconOptions
-     *
      * @throws Exception\IconSourceOptionIsMissing
      */
     public function toArray(): array
