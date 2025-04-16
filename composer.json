@@ -1,0 +1,80 @@
+{
+	"name": "eliashaeussler/typo3-config-objects",
+	"description": "Provides value objects for strictly typed TYPO3 configuration",
+	"license": "GPL-2.0-or-later",
+	"type": "library",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "elias@haeussler.dev",
+			"homepage": "https://haeussler.dev",
+			"role": "Maintainer"
+		}
+	],
+	"require": {
+		"php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+		"typo3/cms-core": "^12.4 || ^13.4"
+	},
+	"require-dev": {
+		"armin/editorconfig-cli": "^1.8 || ^2.0",
+		"eliashaeussler/php-cs-fixer-config": "^2.0",
+		"eliashaeussler/phpstan-config": "^2.6",
+		"eliashaeussler/rector-config": "^3.1.1",
+		"ergebnis/composer-normalize": "^2.30",
+		"phpstan/extension-installer": "^1.4",
+		"phpstan/phpstan-phpunit": "^2.0",
+		"phpunit/phpunit": "^10.5 || ^11.5 || ^12.1",
+		"shipmonk/composer-dependency-analyser": "^1.8"
+	},
+	"autoload": {
+		"psr-4": {
+			"EliasHaeussler\\Typo3ConfigObjects\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"EliasHaeussler\\Typo3ConfigObjects\\Tests\\": "tests/src/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
+			"typo3/class-alias-loader": false,
+			"typo3/cms-composer-installers": false
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"analyze": [
+			"@analyze:dependencies"
+		],
+		"analyze:dependencies": "composer-dependency-analyser",
+		"fix": [
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
+		],
+		"fix:composer": "@composer normalize",
+		"fix:editorconfig": "@lint:editorconfig --fix",
+		"fix:php": "php-cs-fixer fix",
+		"lint": [
+			"@lint:composer",
+			"@lint:editorconfig",
+			"@lint:php"
+		],
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:editorconfig": "ec",
+		"lint:php": "@fix:php --dry-run",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process -c rector.php",
+		"sca": [
+			"@sca:php"
+		],
+		"sca:php": "phpstan analyse -c phpstan.php",
+		"test": "@test:coverage --no-coverage",
+		"test:coverage": "phpunit -c phpunit.xml"
+	}
+}
