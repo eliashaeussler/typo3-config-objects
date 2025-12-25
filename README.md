@@ -3,7 +3,6 @@
 # Value objects for strictly typed TYPO3 configuration
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-config-objects?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-config-objects)
-[![Maintainability](https://qlty.sh/badges/b05b3b7b-85ef-44da-8b4e-89072b5e1564/maintainability.svg)](https://qlty.sh/gh/eliashaeussler/projects/typo3-config-objects)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-config-objects/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-config-objects/actions/workflows/cgl.yaml)
 [![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-config-objects/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/typo3-config-objects/actions/workflows/tests.yaml)
 [![Supported PHP Versions](https://img.shields.io/packagist/dependency-v/eliashaeussler/typo3-config-objects/php?logo=php)](https://packagist.org/packages/eliashaeussler/typo3-config-objects)
