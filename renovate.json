@@ -3,6 +3,9 @@
 	"extends": [
 		"local>eliashaeussler/renovate-config"
 	],
+	"composerIgnorePlatformReqs": [
+		"ext-intl"
+	],
 	"constraints": {
 		"php": "8.2.*"
 	}
