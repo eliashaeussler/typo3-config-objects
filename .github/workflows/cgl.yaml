@@ -25,8 +25,8 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          # @todo Use PHP 8.4 once PHP-CS-Fixer supports it
-          php-version: 8.3
+          # We use the minimum supported PHP version
+          php-version: 8.1 # renovate-ignore
           tools: composer:v2, cs2pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
