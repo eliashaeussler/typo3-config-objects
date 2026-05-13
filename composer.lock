@@ -4622,16 +4622,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v13.4.28",
+            "version": "v13.4.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "1d2c3cab3c4900cee5ba9af8e3e4885dfd6379a4"
+                "reference": "8712924c3ca2198c6be4016211123576e39dba76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/1d2c3cab3c4900cee5ba9af8e3e4885dfd6379a4",
-                "reference": "1d2c3cab3c4900cee5ba9af8e3e4885dfd6379a4",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/8712924c3ca2198c6be4016211123576e39dba76",
+                "reference": "8712924c3ca2198c6be4016211123576e39dba76",
                 "shasum": ""
             },
             "require": {
@@ -4691,7 +4691,7 @@
                 "typo3/cms-cli": "^3.1.1",
                 "typo3/cms-composer-installers": "^5.0.2",
                 "typo3/html-sanitizer": "^2.2.0",
-                "typo3fluid/fluid": "^4.6.0"
+                "typo3fluid/fluid": "^4.6.1"
             },
             "conflict": {
                 "hoa/core": "*",
@@ -4763,7 +4763,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2026-04-14T10:53:41+00:00"
+            "time": "2026-05-12T09:46:17+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
@@ -7879,16 +7879,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.4.2",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "e645b6463c6a88ea5b44b17d3387d35a912c7946"
+                "reference": "891824c6c59f02a56a5dd58ea8edc44e6c0ece29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/e645b6463c6a88ea5b44b17d3387d35a912c7946",
-                "reference": "e645b6463c6a88ea5b44b17d3387d35a912c7946",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/891824c6c59f02a56a5dd58ea8edc44e6c0ece29",
+                "reference": "891824c6c59f02a56a5dd58ea8edc44e6c0ece29",
                 "shasum": ""
             },
             "require": {
@@ -7927,7 +7927,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.4.2"
+                "source": "https://github.com/rectorphp/rector/tree/2.4.3"
             },
             "funding": [
                 {
@@ -7935,7 +7935,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-16T13:07:34+00:00"
+            "time": "2026-05-12T11:17:24+00:00"
         },
         {
             "name": "sebastian/cli-parser",
