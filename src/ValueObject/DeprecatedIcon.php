@@ -37,7 +37,7 @@ use EliasHaeussler\Typo3ConfigObjects\Contracts;
  *     replacement: non-empty-string|null,
  * }>
  */
-final class DeprecatedIcon implements Contracts\Arrayable
+final readonly class DeprecatedIcon implements Contracts\Arrayable
 {
     /**
      * @param non-empty-string|null $since
@@ -45,9 +45,9 @@ final class DeprecatedIcon implements Contracts\Arrayable
      * @param non-empty-string|null $replacement
      */
     public function __construct(
-        public readonly ?string $since = null,
-        public readonly ?string $until = null,
-        public readonly ?string $replacement = null,
+        public ?string $since = null,
+        public ?string $until = null,
+        public ?string $replacement = null,
     ) {}
 
     public function toArray(): array
