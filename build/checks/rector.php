@@ -21,19 +21,19 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\PhpCsFixerConfig;
-use Symfony\Component\Finder;
+use EliasHaeussler\RectorConfig\Config\Config;
+use Rector\Config\RectorConfig;
+use Rector\ValueObject\PhpVersion;
 
-$header = PhpCsFixerConfig\Rules\Header::create(
-    'eliashaeussler/typo3-config-objects',
-    PhpCsFixerConfig\Package\Type::ComposerPackage,
-    PhpCsFixerConfig\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
-    PhpCsFixerConfig\Package\CopyrightRange::from(2025),
-    PhpCsFixerConfig\Package\License::GPL2OrLater,
-);
+return static function (RectorConfig $rectorConfig): void {
+    $rootPath = dirname(__DIR__, 2);
 
-return PhpCsFixerConfig\Config::create()
-    ->withRule($header)
-    ->withFinder(static fn (Finder\Finder $finder) => $finder->in(__DIR__))
-    ->setCacheFile('.build/cache/php-cs-fixer/.php-cs-fixer.cache')
-;
+    Config::create($rectorConfig, PhpVersion::PHP_82)
+        ->in(
+            $rootPath.'/src',
+            $rootPath.'/tests',
+        )
+        ->withPHPUnit()
+        ->apply()
+    ;
+};
